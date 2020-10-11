@@ -32,7 +32,7 @@ if(!isset($_SESSION['customer_login']))
 <?php    include '_inc/dbconn.php';
 $sender_id=$_SESSION["login_id"];
 $sql="SELECT * FROM passbook".$sender_id." LIMIT 10";
-$result=  mysql_query($sql) or die(mysql_error()); ?>
+$result=  mysqli_query($con, $sql) or die(mysqli_error($con)); ?>
 
     <br><br><br>
     <h3 style="text-align:center;color:#2E4372;"><u>Last 10 Transaction</u></h3>
@@ -46,7 +46,7 @@ $result=  mysql_query($sql) or die(mysql_error()); ?>
                         <th>Balance Amount</th>
                         
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  mysqli_fetch_array($result)){
                             
                             echo "<tr>";
                             echo "<td>".$rws[0]."</td>";
