@@ -47,8 +47,8 @@ if(!isset($_SESSION['customer_login']))
         
         
         $sql="SELECT * FROM beneficiary1 WHERE sender_id='$sender_id' AND status='ACTIVE'";
-        $result=  mysql_query($sql);
-        $rws=mysql_fetch_array($result);
+        $result=  mysqli_query($con, $sql);
+        $rws=mysqli_fetch_array($result);
         $s_id=$rws[1];              
         ?>
         
@@ -61,9 +61,9 @@ if(!isset($_SESSION['customer_login']))
         echo "<tr><td>Select Beneficiary:</td><td> <select name='transfer'>" ; 
         
         $sql1="SELECT * FROM beneficiary1 WHERE sender_id='$sender_id' AND status='ACTIVE'";
-        $result=  mysql_query($sql);
+        $result=  mysqli_query($con, $sql);
                 
-        while($rws=mysql_fetch_array($result)) {
+        while($rws=mysqli_fetch_array($result)) {
         echo "<option value='$rws[3]'>$rws[4]</option>";
         }
       
